@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/zabbixReportConsumer.iml" filepath="$PROJECT_DIR$/.idea/zabbixReportConsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zabbixReportConsumer/zabbixReportConsumer.iml" filepath="$PROJECT_DIR$/zabbixReportConsumer/zabbixReportConsumer.iml" />
     </modules>
   </component>
 </project>
