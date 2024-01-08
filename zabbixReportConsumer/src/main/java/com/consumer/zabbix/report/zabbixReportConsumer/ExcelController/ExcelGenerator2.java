@@ -10,11 +10,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ExcelGenerator2 {
 
-    public static String createExcel(ArrayList<ZabbixReport> zabbixReport) throws IOException {
+    public static byte[] createExcel(ArrayList<ZabbixReport> zabbixReport) throws IOException {
         Workbook workbook = new XSSFWorkbook();
 
         Sheet sheet = workbook.createSheet("Persons");
@@ -53,13 +52,9 @@ public class ExcelGenerator2 {
             cell.setCellStyle(style);
         }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        File currDir = new File(".");
-        String path = currDir.getAbsolutePath();
-        String fileLocation = path.substring(0, path.length() - 1) + "temp.xlsx";
-
-        FileOutputStream outputStream = new FileOutputStream(fileLocation);
-        workbook.write(outputStream);
+        workbook.write(baos);
         workbook.close();
-        return fileLocation;
+
+        return baos.toByteArray();
     }
 }
