@@ -31,8 +31,9 @@ public class ConsumeMessageService {
 
         assert zabbixReport != null;
         //TelegramSender.sendToTelegram(String.valueOf(jsArray),excelGenerator2.createExcel());
-
-        GmailSender.sendEmail("kaan.boldan@gizdanismanlik.com.tr","Zabbix Report",String.valueOf(jsArray),excelGenerator2.createExcel(zabbixReport));
+String excelPath=excelGenerator2.createExcel(zabbixReport);
+System.out.println(excelPath);
+        GmailSender.sendEmail("kaan.boldan@gizdanismanlik.com.tr","Zabbix Report",String.valueOf(jsArray),excelPath);
 
         RabbitMQBody rabbitMQBody= parseRabbitMQBodyJson(messageBody);
         insertDb(rabbitMQBody);
