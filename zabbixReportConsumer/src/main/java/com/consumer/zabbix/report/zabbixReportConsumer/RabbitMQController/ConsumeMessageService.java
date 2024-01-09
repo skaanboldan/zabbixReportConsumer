@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @Slf4j
 public class ConsumeMessageService {
 
-    public void consumeMessage(String messageBody) throws IOException {
+    public void consumeMessage(String messageBody)  {
         try {
 
 
@@ -41,6 +41,7 @@ public class ConsumeMessageService {
         RabbitMQBody rabbitMQBody= parseRabbitMQBodyJson(messageBody);
         insertDb(rabbitMQBody);
         }catch (Exception e){
+            System.out.println("hata ile karşılaştı.."+ e.getMessage());
             e.printStackTrace();
         }
     }
