@@ -9,6 +9,8 @@ import com.consumer.zabbix.report.zabbixReportConsumer.ZabbixController.ZabbixRe
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,23 +23,29 @@ import java.util.ArrayList;
 @Service
 @Slf4j
 public class ConsumeMessageService {
+    private static Logger logger = LogManager.getLogger(ConsumeMessageService.class);
 
     public void consumeMessage(String messageBody)  {
 
         System.out.println("test başlıyo...");
+        logger.info("test başlıyo...");
         try {
             String  address = InetAddress.getByName("www.google.com").getHostAddress();
             InetAddress inet = InetAddress.getByName(address);
             System.out.println("Sending Ping Request to " + address);
             if(inet.isReachable(50000)){
                 System.out.println("Host is reachable");
+
             }
             else{
                 System.out.println("Host is not reachable");
+                logger.error("Host is not reachable");
 
             }
         } catch (Exception e) {
             e.printStackTrace();
+            logger.error("Host is not reachable but exception");
+
         }
 
         try {
