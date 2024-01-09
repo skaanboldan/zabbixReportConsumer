@@ -38,8 +38,8 @@ public class ConsumeMessageService {
         GmailSender.sendEmail("kaan.boldan@gizdanismanlik.com.tr","Zabbix Report",String.valueOf(jsArray),excelGenerator2.createExcel(zabbixReport),"Zabbix Report.xlsx");
             System.out.println("Mail gönderme aşaması tamamlandı");
 
-        RabbitMQBody rabbitMQBody= parseRabbitMQBodyJson(messageBody);
-        insertDb(rabbitMQBody);
+        //RabbitMQBody rabbitMQBody= parseRabbitMQBodyJson(messageBody);
+       //insertDb(rabbitMQBody);
         }catch (Exception e){
             System.out.println("hata ile karşılaştı.."+ e.getMessage());
             e.printStackTrace();
