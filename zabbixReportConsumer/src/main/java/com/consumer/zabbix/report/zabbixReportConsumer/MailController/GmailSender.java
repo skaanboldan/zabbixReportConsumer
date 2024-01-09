@@ -78,7 +78,8 @@ System.out.println("test1");
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("olmadı be : "+e.getMessage());
+            System.out.println("olmadı be : ");
+            System.out.println(e.getMessage());
         }
     }
 }
