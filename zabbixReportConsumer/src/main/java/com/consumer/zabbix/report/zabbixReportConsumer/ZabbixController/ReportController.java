@@ -4,6 +4,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.PutMethod;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class ReportController {
     @CrossOrigin
     @GetMapping
     @RequestMapping(path = "/zabbix/report/getProblems")
-    public ArrayList<ZabbixReport> listProblems() throws UnsupportedEncodingException {
+    public ArrayList<ZabbixReport> listProblems() throws UnsupportedEncodingException, JSONException {
         JSONObject jsonObj = null;
 
 
