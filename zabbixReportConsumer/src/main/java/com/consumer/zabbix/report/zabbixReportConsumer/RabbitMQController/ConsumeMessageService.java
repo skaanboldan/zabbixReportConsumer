@@ -22,6 +22,9 @@ import java.util.ArrayList;
 public class ConsumeMessageService {
 
     public void consumeMessage(String messageBody) throws IOException {
+        try {
+
+
         System.out.println("Consumed message:" +messageBody);
         ReportController reportController=new ReportController();
         ExcelGenerator2 excelGenerator2=new ExcelGenerator2();
@@ -31,11 +34,14 @@ public class ConsumeMessageService {
 
         assert zabbixReport != null;
         //TelegramSender.sendToTelegram(String.valueOf(jsArray),excelGenerator2.createExcel());
-
+        System.out.println("Mail Gönderilecek");
         GmailSender.sendEmail("kaan.boldan@gizdanismanlik.com.tr","Zabbix Report",String.valueOf(jsArray),excelGenerator2.createExcel(zabbixReport),"Zabbix Report.xlsx");
 
         RabbitMQBody rabbitMQBody= parseRabbitMQBodyJson(messageBody);
         insertDb(rabbitMQBody);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
