@@ -1,13 +1,14 @@
 package com.consumer.zabbix.report.zabbixReportConsumer.MailController;
 
-import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class GmailSender {
 
-    public static void sendEmail(String recipientEmail, String subject, String content, byte[] attachmentData, String attachmentName) {
+
+    public static void sendEmail(String recipientEmail, String subject, String content, String attachmentPath, String s) {
         String senderEmail = "kaanboldan@gmail.com";
         String senderPassword = "zpka mtdh zhqu exwx"; // Replace with your actual Gmail password
 
@@ -46,13 +47,16 @@ public class GmailSender {
             // Attach the text part
             multipart.addBodyPart(textPart);
 
-            // Attach the byte array as an attachment
-            if (attachmentData != null && attachmentData.length > 0) {
-                MimeBodyPart attachmentPart = new MimeBodyPart(new ByteArrayInputStream(attachmentData));
-                attachmentPart.setFileName(attachmentName);
+            // Attach the file part if the attachment path is provided
+            if (attachmentPath != null && !attachmentPath.isEmpty()) {
+                MimeBodyPart filePart = new MimeBodyPart();
+                filePart.attachFile(attachmentPath);
 
-                // Attach the byte array
-                multipart.addBodyPart(attachmentPart);
+                // Set the file name (you can customize this)
+                filePart.setFileName("Zabbix_report.xlsx");
+
+                // Attach the file part
+                multipart.addBodyPart(filePart);
             }
 
             // Set the content of the message as the multipart object
@@ -61,9 +65,9 @@ public class GmailSender {
             // Send the email
             Transport.send(message);
 
-            System.out.println("Mail sent successfully!");
+            System.out.println("Mail başarıyla gönderildi!");
 
-        } catch (MessagingException e) {
+        } catch (MessagingException | IOException e) {
             e.printStackTrace();
         }
     }
