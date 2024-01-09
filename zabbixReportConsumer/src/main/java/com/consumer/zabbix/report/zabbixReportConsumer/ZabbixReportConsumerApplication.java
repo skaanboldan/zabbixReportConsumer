@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.net.InetAddress;
 
+
 @SpringBootApplication
 public class ZabbixReportConsumerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ZabbixReportConsumerApplication.class, args);
 		try {
 			String  address = InetAddress.getByName("www.google.com").getHostAddress();
 			InetAddress inet = InetAddress.getByName(address);
@@ -19,11 +19,14 @@ public class ZabbixReportConsumerApplication {
 			}
 			else{
 				System.out.println("Host is not reachable");
+
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//SpringApplication.run(ZabbixReportConsumerApplication.class, args);
+
 	}
 
 }
