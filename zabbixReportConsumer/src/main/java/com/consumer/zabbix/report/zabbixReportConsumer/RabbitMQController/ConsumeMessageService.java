@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.ArrayList;
 
 
@@ -22,6 +23,24 @@ import java.util.ArrayList;
 public class ConsumeMessageService {
 
     public void consumeMessage(String messageBody)  {
+
+        System.out.println("test başlıyo...");
+        try {
+            String  address = InetAddress.getByName("www.google.com").getHostAddress();
+            InetAddress inet = InetAddress.getByName(address);
+            System.out.println("Sending Ping Request to " + address);
+            if(inet.isReachable(50000)){
+                System.out.println("Host is reachable");
+            }
+            else{
+                System.out.println("Host is not reachable");
+
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
         try {
 
 
