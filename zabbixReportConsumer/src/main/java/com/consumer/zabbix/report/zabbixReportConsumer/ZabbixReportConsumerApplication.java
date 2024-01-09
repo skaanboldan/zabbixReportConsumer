@@ -10,6 +10,7 @@ import java.net.InetAddress;
 public class ZabbixReportConsumerApplication {
 
 	public static void main(String[] args) {
+		System.out.println("test başlıyo...");
 		try {
 			String  address = InetAddress.getByName("www.google.com").getHostAddress();
 			InetAddress inet = InetAddress.getByName(address);
