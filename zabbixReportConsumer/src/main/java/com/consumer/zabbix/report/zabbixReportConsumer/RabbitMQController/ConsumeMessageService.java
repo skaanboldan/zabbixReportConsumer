@@ -35,16 +35,17 @@ public class ConsumeMessageService {
             System.out.println("Sending Ping Request to " + address);
             if(inet.isReachable(50000)){
                 System.out.println("Host is reachable");
+                logger.info("Host is reachable");
 
             }
             else{
                 System.out.println("Host is not reachable");
-                logger.error("Host is not reachable");
+                logger.info("Host is not reachable");
 
             }
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("Host is not reachable but exception");
+            logger.info("Host is not reachable but exception");
 
         }
 
