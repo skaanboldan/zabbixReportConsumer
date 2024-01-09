@@ -69,6 +69,7 @@ public class GmailSender {
 
         } catch (MessagingException | IOException e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }
