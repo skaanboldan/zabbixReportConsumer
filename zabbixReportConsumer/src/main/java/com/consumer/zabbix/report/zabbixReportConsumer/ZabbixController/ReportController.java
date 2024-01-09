@@ -43,7 +43,7 @@ public class ReportController {
             // load a properties file
 
             // get the property value and print it out
-        String ZABBIX_API_URL = "http://" + "192.168.1.101" + "/zabbix/api_jsonrpc.php";
+        String ZABBIX_API_URL = "http://" + "192.168.1.100" + "/zabbix/api_jsonrpc.php";
          System.out.println(ZABBIX_API_URL);
             jsonObj = new JSONObject("{\n" +
                     "           \"jsonrpc\": \"2.0\",\n" +
