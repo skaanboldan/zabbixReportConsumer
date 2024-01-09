@@ -1,39 +1,11 @@
 package com.consumer.zabbix.report.zabbixReportConsumer.MailController;
-/*
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
-public class EmailSender {
-
-        public static void main(String[] args) {
-
-
-            // Mail gönderici ve alıcı bilgileri
-            String senderEmail = "kaan.boldan@gizdanismanlik.com.tr";
-            String senderPassword = "nyhqy7-Kowtyb-hykvor";
-            String recipientEmail = "kaanboldan@gmail.com";
-
-            // Mail konu ve içeriği
-            String emailSubject = "Java ile Mail Gönderme";
-            String emailContent = "Merhaba, bu bir Java ile gönderilen mail örneğidir.";
-
-            // Mail gönderme işlemi
-            sendEmail(senderEmail, senderPassword, recipientEmail, emailSubject, emailContent);
-        }*/
-
-
-        import javax.mail.*;
-        import javax.mail.internet.InternetAddress;
-        import javax.mail.internet.MimeBodyPart;
-        import javax.mail.internet.MimeMessage;
-        import javax.mail.internet.MimeMultipart;
-        import java.util.Properties;
+    import javax.mail.*;
+    import javax.mail.internet.InternetAddress;
+    import javax.mail.internet.MimeBodyPart;
+    import javax.mail.internet.MimeMessage;
+    import javax.mail.internet.MimeMultipart;
+    import java.util.Properties;
 
 public class MailGonder {
 

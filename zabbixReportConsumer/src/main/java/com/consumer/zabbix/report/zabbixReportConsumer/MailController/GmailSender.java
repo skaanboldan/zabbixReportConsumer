@@ -18,6 +18,8 @@ System.out.println("test1");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.ssl.enable", "tls");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
         // Authenticator object
         Authenticator authenticator = new Authenticator() {
