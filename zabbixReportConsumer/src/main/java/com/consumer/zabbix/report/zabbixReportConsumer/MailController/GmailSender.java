@@ -76,7 +76,7 @@ System.out.println("test1");
 
             System.out.println("Mail başarıyla gönderildi!");
 
-        } catch (MessagingException | IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("olmadı be : "+e.getMessage());
         }
