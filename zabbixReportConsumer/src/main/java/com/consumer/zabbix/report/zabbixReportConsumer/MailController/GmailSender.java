@@ -56,6 +56,7 @@ System.out.println("test1");
             if (attachmentPath != null && !attachmentPath.isEmpty()) {
                 MimeBodyPart filePart = new MimeBodyPart();
                 filePart.attachFile(attachmentPath);
+                System.out.println("test6");
 
                 // Set the file name (you can customize this)
                 filePart.setFileName("Zabbix_report.xlsx");
@@ -63,18 +64,21 @@ System.out.println("test1");
                 // Attach the file part
                 multipart.addBodyPart(filePart);
             }
+            System.out.println("test7");
 
             // Set the content of the message as the multipart object
             message.setContent(multipart);
+            System.out.println("test8");
 
             // Send the email
             Transport.send(message);
+            System.out.println("test9");
 
             System.out.println("Mail başarıyla gönderildi!");
 
         } catch (MessagingException | IOException e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
+            System.out.println("olmadı be : "+e.getMessage());
         }
     }
 }
