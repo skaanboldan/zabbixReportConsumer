@@ -27,29 +27,7 @@ public class ConsumeMessageService {
 
     public void consumeMessage(String messageBody)  {
 
-        System.out.println("test başlıyo...");
-        logger.info("test başlıyo...");
-        try {
-            String  address = InetAddress.getByName("www.google.com").getHostAddress();
-            InetAddress inet = InetAddress.getByName(address);
-            System.out.println("Sending Ping Request to " + address);
-            if(inet.isReachable(50000)){
-                System.out.println("Host is reachable");
-                logger.info("Host is reachable");
-
-            }
-            else{
-                System.out.println("Host is not reachable");
-                logger.info("Host is not reachable");
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            logger.info("Host is not reachable but exception");
-
-        }
-
-        try {
+       try {
 
 
         System.out.println("Consumed message:" +messageBody);
@@ -57,12 +35,13 @@ public class ConsumeMessageService {
         ExcelGenerator2 excelGenerator2=new ExcelGenerator2();
         ArrayList<ZabbixReport> zabbixReport= reportController.listProblems();
         JSONArray jsArray = new JSONArray(zabbixReport);
+        RabbitMQBody rabbitMQBody=parseRabbitMQBodyJson(messageBody);
 
 
         assert zabbixReport != null;
         //TelegramSender.sendToTelegram(String.valueOf(jsArray),excelGenerator2.createExcel());
-            System.out.println("Mail Gönderilecek");
-        GmailSender.sendEmail("kaan.boldan@gizdanismanlik.com.tr","Zabbix Report",String.valueOf(jsArray),excelGenerator2.createExcel(zabbixReport),"Zabbix Report.xlsx");
+            System.out.println(rabbitMQBody.getMail()+ " adresine mail Gönderilecek");
+        GmailSender.sendEmail(rabbitMQBody.getMail(),"Zabbix Report",String.valueOf(jsArray),excelGenerator2.createExcel(zabbixReport),"Zabbix Report.xlsx");
             System.out.println("Mail gönderme aşaması tamamlandı");
 
         //RabbitMQBody rabbitMQBody= parseRabbitMQBodyJson(messageBody);
